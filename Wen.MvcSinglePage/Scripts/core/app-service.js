@@ -3,26 +3,6 @@ var demoService = angular.module('demoService', []);
 
 //请求服务
 demoService.factory('requestService', function ($http, $q) {
-    //var request = {
-    //    method: 'POST',
-    //    url: '',
-    //    headers: { 'Content-Type': 'application/json' },
-    //    data: {}
-    //};
-    //var postData = {
-    //    lists: function (type) {
-    //        request.method = "get";
-    //        request.url = "../api/demo/get";
-    //        return requestService($http, $q, request);
-    //    },
-    //    submit_product: function (data) {
-    //        request.method = "post";
-    //        request.url = "../api/order";
-    //        request.data = data;
-    //        return requestService($http, $q, request);
-    //    }
-    //};
-
     var params = {
         method: '',
         url: '',
@@ -30,18 +10,35 @@ demoService.factory('requestService', function ($http, $q) {
         data: {}
     }
     var request = {
-        lists: function (type) {
-            params.method = "get";
-            params.url = "../api/demo/get";
+        add: function (data) {
+            params.method = "post";
+            params.url = "../api/demo/add";
+            params.data = data;
             return requestService($http, $q, params);
         },
-        submit_product: function (data) {
-            params.method = "post";
-            params.url = "../api/order";
+        del: function (id) {
+            params.method = "delete";
+            params.url = "../api/demo/del?id=" + id;
+            return requestService($http, $q, params);
+        },
+        update: function (data) {
+            params.method = "put";
+            params.url = "../api/demo/update";
             params.data = data;
+            return requestService($http, $q, params);
+        },
+        get: function (id) {
+            params.method = "get";
+            params.url = "../api/demo/get?id=" + id;
+            return requestService($http, $q, params);
+        },
+        details: function (pageIndex) {
+            params.method = "get";
+            params.url = "../api/demo/details?pageIndex=" + pageIndex;
             return requestService($http, $q, params);
         }
     };
+
     return request;
 });
 

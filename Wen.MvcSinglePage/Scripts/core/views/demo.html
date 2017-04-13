@@ -1,1 +1,23 @@
-﻿<div>Demo</div>
+﻿
+
+<div>Demo</div>
+<br/>
+
+<div>
+    <input type="button" id="btnAdd" value="Add" ng-click="add()"/>
+    <input type="button" id="btnDel" value="Del" ng-click="del()"/>
+    <input type="button" id="btnUpdate" value="Update" ng-click="update()"/>
+    <input type="button" id="btnGet" value="Get" ng-click="get()"/>
+    <input type="button" id="btnDetails" value="Details" ng-click="details()"/>
+</div>
+
+<table>
+    <tr ng-repeat="user in model">
+        <td>{{user.Id}}</td>
+        <td>{{user.Name}}</td>
+        <td>{{user.Salary}}</td>
+    </tr>
+</table>
+
+
+<div>{{model.Id}}</div>
