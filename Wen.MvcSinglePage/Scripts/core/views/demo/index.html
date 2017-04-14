@@ -1,0 +1,20 @@
+﻿
+<div class="address_serace">
+    <input class="form-control" ng-change="search()" ng-model="demoKey" placeholder="搜索">
+</div>
+<div class="address_div">
+    <dl class="address_dl" ng-repeat="item in list">
+        <dd class="address_font">
+            <p class="address_font_t">{{item.Name}}</p>
+            <p>单价：￥{{item.Price}}</p>
+            <a ng-click="del(item.Id)">删除</a>
+            <a ng-click="edit(item.Id)">编辑</a>
+        </dd>
+    </dl>
+
+</div>
+
+<button class="btn btn-primary btn-block " ng-click="loadMore()">下一页...</button>
+<button class="btn btn-primary btn-block " ng-click="add()">添加</button>
+
+

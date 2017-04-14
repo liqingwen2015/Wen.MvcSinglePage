@@ -119,7 +119,8 @@
     <Content Include="Scripts\core\app.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\core\controllers\demoController.js" />
-    <Content Include="Scripts\core\views\demo.html" />
+    <Content Include="Scripts\core\views\demo\edit.html" />
+    <Content Include="Scripts\core\views\demo\index.html" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />

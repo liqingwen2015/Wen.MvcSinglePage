@@ -48,7 +48,7 @@ namespace Wen.MvcSinglePage.Controllers.Api
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpDelete]
-        public int Del(int id=0)
+        public int Del(int id = 0)
         {
             var demo = _demos.FirstOrDefault(x => x.Id == id);
             if (demo != null)
@@ -77,10 +77,11 @@ namespace Wen.MvcSinglePage.Controllers.Api
         /// <summary>
         /// 详情
         /// </summary>
+        /// <param name="key"></param>
         /// <param name="pageIndex"></param>
         /// <returns></returns>
         [HttpGet]
-        public IEnumerable<DemoViewModel> Details(int pageIndex)
+        public IEnumerable<DemoViewModel> Details(string key, int pageIndex)
         {
             const int pageSize = 10;
             return _demos.Skip(pageSize * (pageIndex - 1)).Take(pageSize);

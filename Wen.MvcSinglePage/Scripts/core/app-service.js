@@ -32,9 +32,9 @@ demoService.factory('requestService', function ($http, $q) {
             params.url = "../api/demo/get?id=" + id;
             return requestService($http, $q, params);
         },
-        details: function (pageIndex) {
+        details: function (key, pageIndex) {
             params.method = "get";
-            params.url = "../api/demo/details?pageIndex=" + pageIndex;
+            params.url = "../api/demo/details?key=" + key + "&pageIndex=" + pageIndex;
             return requestService($http, $q, params);
         }
     };
