@@ -1,27 +1,15 @@
 ﻿app.controller('demoController', function ($scope, $http, $location, $routeParams, requestService) {
     console.log('demoController');
 
-    var pageIndex = 1;
-    $scope.model = {};
+    var currentPageIndex = 1;
     $scope.list = [];
 
-    $scope.del = function () {
-        var id = 1;
-
+    //删除
+    $scope.del = function (id) {
         requestService.del(id)
             .then(function (result) {
                 var data = result.data;
                 console.log(data);
-            });
-    };
-
-    $scope.get = function () {
-        var id = 5;
-
-        requestService.get(id)
-            .then(function (result) {
-                var data = result.data;
-                $scope.model = data;
             });
     };
 
@@ -34,28 +22,40 @@
             });
         console.log($scope.list);
     };
-    $scope.details("", pageIndex);
+    $scope.details("", currentPageIndex);
 
     //查询
     $scope.search = function () {
         $scope.list = [];
-        $scope.details($scope.demoKey, pageIndex);
+        $scope.details($scope.demoKey, currentPageIndex);
     };
 
+    //新增
     $scope.add = function () {
         $location.url('/add');
     };
 
+    //编辑
     $scope.edit = function (id) {
         $location.url('/edit/' + id);
     };
 
-    $scope.loadMore = function () {
-        pageIndex++;
-        $scope.details($scope.demoKey, pageIndex);
+    //下一页
+    $scope.nextPage = function () {
+        currentPageIndex++;
+        $scope.details($scope.demoKey, currentPageIndex);
+    };
+
+    //上一页
+    $scope.prePage = function () {
+        if (currentPageIndex > 1) {
+            currentPageIndex--;
+        }
+        $scope.details($scope.demoKey, currentPageIndex);
     };
 });
 
+//demoEditController
 app.controller('demoEditController',
     function ($scope, $http, $location, $routeParams, requestService) {
         console.log('demoEditController');

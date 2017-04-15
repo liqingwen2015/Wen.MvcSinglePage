@@ -12,7 +12,7 @@ namespace Wen.MvcSinglePage.Controllers.Api
 {
     public class DemoController : ApiController
     {
-        private readonly IList<DemoViewModel> _demos = new List<DemoViewModel>();
+        private IList<DemoViewModel> _demos = new List<DemoViewModel>();
 
         public DemoController()
         {
@@ -75,7 +75,7 @@ namespace Wen.MvcSinglePage.Controllers.Api
         }
 
         /// <summary>
-        /// 详情
+        /// 详情（分页）
         /// </summary>
         /// <param name="key"></param>
         /// <param name="pageIndex"></param>
@@ -84,6 +84,11 @@ namespace Wen.MvcSinglePage.Controllers.Api
         public IEnumerable<DemoViewModel> Details(string key, int pageIndex)
         {
             const int pageSize = 10;
+            if (!string.IsNullOrEmpty(key))
+            {
+                _demos = _demos.Where(x => x.Name.Contains(key)).ToList();
+            }
+
             return _demos.Skip(pageSize * (pageIndex - 1)).Take(pageSize);
         }
 
