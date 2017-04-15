@@ -83,7 +83,7 @@ namespace Wen.MvcSinglePage.Controllers.Api
         [HttpGet]
         public IEnumerable<DemoViewModel> Details(string key, int pageIndex)
         {
-            const int pageSize = 10;
+            const int pageSize = 5;
             if (!string.IsNullOrEmpty(key))
             {
                 _demos = _demos.Where(x => x.Name.Contains(key)).ToList();
